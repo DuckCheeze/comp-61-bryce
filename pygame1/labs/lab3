@@ -1,0 +1,88 @@
+print("\nWelcome to the Chill Chad List Operations Program!\n")
+my_list = [0]
+choice = 0
+print (my_list)
+while choice != 8:
+    print("\nPlease Follow the Menu Directions Carefully, so Chad can best help you out:\n ")
+    print("Menu:  ")
+    print("1. Add a number to the list")
+    print("2. Remove a number from the list")
+    print("3. Insert a number at a specific position")
+    print("4. Pop a number from the list")
+    print("5. Find the sum, average, and maximum of the list")
+    print("6. Search for a number in the list")
+    print("7. Remove all odd numbers from the list")
+    print("8. Exit")
+    choice=int(input("Please Enter Your Selection:  "))
+    if choice==1:
+        a = 0
+        a = int(input("Input_Chad: Whats up brotha, enter a number to add into the list to get started:  "))
+        index = 0
+        counter = 0
+        while (index < len(my_list)):
+            if(my_list[index] == a):
+                counter = counter + 1
+            if(counter == 2):
+                my_list.pop(index)
+            index = index + 1
+        my_list.append(a)
+        disco = input("I gotchu bro, u wanna check out that new list? (yes/no):  ")
+        if disco == 'yes' :
+            print("Fs bro, here it is: ", my_list)
+        else:
+            print("Ight, no problem bro, I'll just hold onto it then for now.")
+    elif choice==2:
+        print("What number do ya wanna remove bro?")
+        print(my_list)
+        b = int(input("Enter that number ya wanna get rid of here:  "))
+        if b in my_list:
+            my_list.remove(b)
+            print("Sick bro, here's the new list", my_list)
+        else:
+            print("Invalid Input brotha. Please gimme a Valid Input.")
+    elif choice==3:
+        c = int(input("First, gimme the numeric position where you're tryna put this new number:  "))
+        k = int(input("Ight bro, that works. Whats the number we're stickin in that spot?"))
+        if c < 0 or c > len(my_list):
+            print("Invalid position bro. We need a valid index man.")
+        else:
+            my_list.insert(c, k)
+            print("Here's the updated list brodie:", my_list)
+    elif choice ==4:
+        print("What number would ya like to pop bro?")
+        print(my_list)
+        d = int(input("Enter that number in here bro --> :  "))
+        index = 0
+        while (index < len(my_list)):
+            if(my_list[index] == d):
+                my_list.pop(index)
+            index = index + 1
+            print(my_list)
+        print("Invalid Input. Please Enter a Valid Input.")
+        print("For sure bro, I just took that one out for ya. Here's the updated list: ", my_list)
+    elif choice ==5:
+        e = sum(my_list)
+        f = e / len(my_list)
+        g = max(my_list)
+        print("Your list's sum is ", e,)
+        print("The list's average number is ", f)
+        print("And the max input is ", g, "bro")
+    elif choice ==6:
+        h = int(input("Lemme know what number you're lookin for in the list:  "))
+        if h in my_list:
+            index = my_list.index(h)
+            print(h, "is here, yurrr!")
+        else:
+            print("Aw man bro, that one ain't in here. Gimme a real number next time.")
+    elif choice ==7:
+        i = []
+        for j in my_list:
+            if j % 2 == 0:
+                i.append(j)
+        my_list = i
+        print("Here's your list without them odd numbers brotha:", my_list)
+    elif choice ==8:
+        print("\nSee ya bro\n")
+    else:
+        print("Enter a Number Between 1 and 8, sheesh bro.")
+print("Have a nice day and take it easy!\n")

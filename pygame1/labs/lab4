@@ -1,0 +1,76 @@
+import random
+
+pts = 0
+rds = 0
+wins = 0
+ties = 0
+loss = 0
+rd_num = []
+our_pts = []
+comp_pts = []
+results = []
+
+def dice_roll():
+    return random.radint(1,6)
+def dice_rolls(dice_num):
+    total = 0
+    while dice_num > 0:
+        total = total + dice_roll()
+        dice_num = dice_num - 1
+    return total
+def winloss_result(our_pts, comp_pts):
+    global wins, ties, loss, pts
+    if our_pts > comp_pts:
+        wins = wins + 1
+        score = score + 1
+        return "You win"
+    elif our_pts < comp_pts:
+        loss = loss + 1
+        score = score - 1
+        return "you lost, you suck"
+    else:
+        ties = ties + 1
+        return "you tied it, come on man"
+def shop(pts):
+    print("\nHeres the shop, ur pts total is ", pts)
+    print("press 1 to buy wins (1 pt = 1 win)")
+    print("press 2 to exit")
+    choice = input("you chose ")
+    while pts > -1:
+        if choice == "1" and pts > 0:
+            wins = wins + pts
+            print("your pts are now coverted into wins")
+        elif choice == "2":
+            print("exiting shop")
+        else:
+            print("what the hell")
+            choice = input("you chose ")
+    return pts
+def disp_stats():
+    print("\nThe dice game concluded, you played", rds, "rounds, put up ", wins, "wins, tied ", ties, "times, and lost ", loss, "times. Your final pt total was " , pts, ".")
+    i = 0
+    while i < rds:
+        print("Of ", rds, "rounds, you won", wins[i], " times, while I won ", comp_pts, "times. One of us sucks at this game and hopefully its not me. I am a computer.")
+        i = i + 1
+while pts > -200:
+    global rds, pts
+    print("\nDice Battle Game: Points: ", pts)
+    shop_choice = input("would you like to go to the shop? enter yes or no, all lowercase: ")
+    if shop_choice == "yes":
+        score = shop(score)
+    our_roll = dice_rolls(2)
+    comp_roll = dice_rolls(2)
+    print("you got a ", our_roll, "computer got a ", comp_roll, ".")
+    result = winloss_result(our_roll, comp_roll)
+    print("the round result is as follows: ", result)
+    rounds = rounds + 1
+    rd_num.append(rounds)
+    our_pts.append(our_roll)
+    comp_pts.append(comp_roll)
+    results.append(result)
+    repeat = input("do ya wanna play again? yes or no, all lowercase: ")
+    if play_again != "yes":
+        print("let's run it back")
+    else:
+        print("ok, bye now friend.")
+disp_stats()
