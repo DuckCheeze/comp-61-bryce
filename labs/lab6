@@ -1,0 +1,38 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.kid = None
+
+    def add_kid(self, child):
+        self.kid = child
+
+    def print_fam_line(self):
+        print(f"{self.name} ({self.age})")
+        if self.kid:
+            self.kid.print_fam_line()
+
+    def count_l_gap(self, gap_limit):
+        if self.kid is None:
+            return 0
+        gap = self.age - self.kid.age
+        return (1 if gap > gap_limit else 0) + self.kid.count_l_gap(gap_limit)
+
+def build_fam():
+    name = input("Please enter this person's name:  ")
+    age = int(input(f"Please enter {name}'s age:  "))
+    person = Person(name, age)
+    has_kid = input(f"Does {name} have a kid? (type either yes/no): ").strip().lower()
+    if has_kid == "yes":
+        child = build_fam()
+        person.add_kid(child)
+    return person
+
+print("Generational Gap Checker:\n")
+fam_head = build_fam()
+print("\nHere's your fam tree:\n")
+fam_head.print_fam_line()
+gap = int(input("\nEnter the age gap to check between generations (Usually 15-20): "))
+gap_ct = fam_head.count_l_gap(gap)
+print(f"\nThe number of generations with an age gap greater than {gap} is {gap_ct}")
+print("\nThanks for using the Generational Gap Checker! Come back soon!")

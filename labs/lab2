@@ -1,0 +1,43 @@
+print("\nWelcome to Bank of Bryce!\n")
+
+balance= 1000
+choice = 5
+
+while choice != 4:
+    print("PLease Follow the Menu Directions Carefully to Complete Your Transaction:\n ")
+    print("Menu:  ")
+    print("1. Check Your Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. Exit")
+
+    choice=int(input("Please Enter Your Selection:  "))
+
+    if choice==1:
+        print("Your Current Balance is: ", balance)
+
+    elif choice==2:
+        deposit_amount = float(input("Enter Amount to Deposit:"))
+        if deposit_amount>0:
+            balance +=deposit_amount
+            print("Deposit Successful! You're New Balance Is:", balance)
+        else:
+            print("Invalid Input. Please Enter a Valid Input.")
+
+    elif choice==3:
+        withdraw_amount=float(input("Please Enter the Amount You'd Like To Withdraw:"))
+        if withdraw_amount>balance:
+            print("Insufficient Funds.")
+        elif withdraw_amount<=0:
+            print("Invalid Amount. Please Enter a Positive Value." )
+        else:
+            balance -= withdraw_amount
+            print("Withdraw Successful! Your New Balance Is: ", balance)
+
+    elif choice ==4:
+        print("\nThanks for Banking with Bryce, Goodbye.")
+
+
+    else:
+        print("Please Enter a Number Between 1 and 4.")
+print("\nHave a Nice Day!\n")
